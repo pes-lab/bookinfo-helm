@@ -1,0 +1,5 @@
+virtualService:
+  subset1: v1
+  subset2: v6
+  weight1: 50
+  weight2: 50
