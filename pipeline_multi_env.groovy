@@ -4,7 +4,7 @@ pipeline {
         choice(name: 'ENVIRONMENT', choices: ['dev', 'uat', 'stg'], description: '选择运行环境')
     }  
     agent {
-        label { getAgentLabel() }  
+        node { label getAgentLabel() }  
     }
     stages {
         stage('run pipeline script') {
