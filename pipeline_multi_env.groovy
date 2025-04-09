@@ -4,8 +4,7 @@ pipeline {
         choice(name: 'ENVIRONMENT', choices: ['dev', 'uat', 'stg'], description: '选择运行环境')
     }  
     agent {
-        node { 
-            label {
+        label {
                 switch(parameters.ENVIRONMENT) {
                     case 'dev':
                         return 'slave_dev'
@@ -16,7 +15,6 @@ pipeline {
                     default: 
                         return 'slave'
                 }
-            }
         }  
     }
     stages {
