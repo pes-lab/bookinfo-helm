@@ -1,5 +1,4 @@
 pipeline {
-
     parameters {
         choice(name: 'ENVIRONMENT', choices: ['dev', 'uat', 'stg'], description: '选择运行环境')
     }  
@@ -28,11 +27,11 @@ pipeline {
 
 def getAgentLabel(){
     switch(parameters.ENVIRONMENT) {
-        case 'dev':
+        case dev:
             return 'slave_dev'
-        case 'uat':
+        case uat:
             return 'slave_uat'
-        case 'stg':
+        case stg:
             return 'slave_stg'
         default: 
             return 'slave'                   
