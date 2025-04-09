@@ -4,17 +4,20 @@ pipeline {
     }
 
     stages {
-        stage('checkout') {
-            steps {
-                sh 'pwd'
-                git 'https://github.com/pes-lab/bookinfo-helm.git'
-                sh 'pwd'
-            }
-        }
+        // stage('checkout') {
+        //     steps {
+        //         sh """
+        //         pwd
+        //         git clone https://github.com/pes-lab/bookinfo-helm.git
+        //         pwd
+        //         """
+        //     }
+        // }
         stage('run pipeline script') {
             steps {
                 sh """
                     pwd
+                    ls
                     upgrade.sh
                 """
                 // sh """
