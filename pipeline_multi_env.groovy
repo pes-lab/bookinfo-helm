@@ -4,18 +4,7 @@ pipeline {
         choice(name: 'ENVIRONMENT', choices: ['dev', 'uat', 'stg'], description: '选择运行环境')
     }  
     agent {
-        label {
-                switch(parameters.ENVIRONMENT) {
-                    case 'dev':
-                        return 'slave_dev'
-                    case 'uat':
-                        return 'slave_uat'
-                    case 'stg':
-                        return 'slave_stg'
-                    default: 
-                        return 'slave'
-                }
-        }  
+        label { getAgentLabel() }  
     }
     stages {
         stage('run pipeline script') {
@@ -34,5 +23,18 @@ pipeline {
         failure {
             echo "failure"
         }
+    }
+}
+
+def getAgentLabel(){
+    switch(parameters.ENVIRONMENT) {
+        case 'dev':
+            return 'slave_dev'
+        case 'uat':
+            return 'slave_uat'
+        case 'stg':
+            return 'slave_stg'
+        default: 
+            return 'slave'                   
     }
 }
