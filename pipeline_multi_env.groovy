@@ -27,11 +27,13 @@ pipeline {
 
 def getAgentLabel(){
     switch(parameters.ENVIRONMENT) {
-        case dev:
+        case 'dev':
             return 'slave_dev'
-        case uat:
-            return 'slave_uat'
-        case stg:
+        case 'uat':
+            // return 'slave_uat'
+            'slave_uat'
+            break
+        case 'stg':
             return 'slave_stg'
         default: 
             return 'slave'                   
