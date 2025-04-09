@@ -6,9 +6,6 @@ pipeline {
         node { label getAgentLabel() }  
     }
     stages {
-        // agent {
-        //     node { label getAgentLabel() }  
-        // }
         stage('run pipeline script') {
             steps {
                 sh """
