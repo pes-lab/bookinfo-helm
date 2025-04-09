@@ -6,6 +6,9 @@ pipeline {
         node { label getAgentLabel() }  
     }
     stages {
+        // agent {
+        //     node { label getAgentLabel() }  
+        // }
         stage('run pipeline script') {
             steps {
                 sh """
@@ -26,13 +29,11 @@ pipeline {
 }
 
 def getAgentLabel(){
-    switch(parameters.ENVIRONMENT) {
+    switch(params.ENVIRONMENT) {
         case 'dev':
             return 'slave_dev'
         case 'uat':
-            // return 'slave_uat'
-            'slave_uat'
-            break
+            return 'slave_uat'
         case 'stg':
             return 'slave_stg'
         default: 
